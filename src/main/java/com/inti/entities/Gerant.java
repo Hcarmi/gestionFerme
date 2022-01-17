@@ -1,6 +1,11 @@
 package com.inti.entities;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,9 +21,9 @@ public class Gerant {
 	private String nom;
 	private String prenom;
 
-	@ManyToMany
-	@JoinTable (name="Gerants_Fermes_Associations", joinColumns=@JoinColumn(name="idGerant"), inverseJoinColumns=@JoinColumn(name="idFerme"))
-	private <Ferme> fermes = new ArrayList<>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "Gerant_Ferme_Association", joinColumns = @JoinColumn(name = "idGerant", referencedColumnName = "idGerant"), inverseJoinColumns = @JoinColumn(name = "idFerme", referencedColumnName = "idFerme"))
+	private Set<Ferme> fermes = new HashSet<>();
 	
 	
 	public Gerant(long idGerant, String nom, String prenom) {
