@@ -1,5 +1,5 @@
 package com.inti.repositories;
 
-public class AnimalRepository {
+public interface AnimalRepository {
 
 }
