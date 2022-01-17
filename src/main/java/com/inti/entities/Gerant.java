@@ -20,14 +20,15 @@ public class Gerant {
 	@JoinTable (name="Gerants_Fermes_Associations", joinColumns=@JoinColumn(name="idGerant"), inverseJoinColumns=@JoinColumn(name="idFerme"))
 	private <Ferme> fermes = new ArrayList<>();
 	
-	public Gerant() {
-	}
-
+	
 	public Gerant(long idGerant, String nom, String prenom) {
 		super();
 		this.idGerant = idGerant;
 		this.nom = nom;
 		this.prenom = prenom;
+	}
+
+	public Gerant() {
 	}
 
 	public long getIdGerant() {
